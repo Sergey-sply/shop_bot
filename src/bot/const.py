@@ -1,0 +1,1 @@
+BASE_PER_PAGE = 5
