@@ -53,8 +53,8 @@ class Settings(
     RedisSettings,
     DBSettings,
     BotSettings,
-): ...
-
+):
+    DEBUG: bool = False
 
 
 settings = Settings()

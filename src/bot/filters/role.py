@@ -19,6 +19,9 @@ class RoleFilter(Filter):
         user_service: UserServicePort = FromDishka[UserServicePort]
     ) -> bool:
 
+        if settings.DEBUG:
+            return True
+
         user_id = self._extract_user_id(event)
         if user_id is None:
             return False

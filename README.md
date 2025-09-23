@@ -37,3 +37,26 @@ ___
 
 ___
 
+## Easy start with Docker
+Clone the repository
+
+```bash
+git clone https://github.com/Sergey-sply/shop_bot.git
+```
+___
+
+Go to the app dir and configure env file
+1. Copy file `.env.example` and rename it to .env
+2. Open it and configure it
+___
+
+Then make migrations
+```commandline
+docker compose run --rm migrate
+```
+___
+
+And run docker-compose
+```commandline
+docker compose up --build -d
+```
