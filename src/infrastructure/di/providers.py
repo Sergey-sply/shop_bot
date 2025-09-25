@@ -1,4 +1,5 @@
 from dishka import Provider, Scope, provide
+from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncSession
 
 from src.application.ports.repository.cart import CartRepositoryPort
 from src.application.ports.repository.category import CategoryRepositoryPort
@@ -15,6 +16,7 @@ from src.application.ports.services.user import UserServicePort
 from src.application.use_cases.order.create import CreateOrderUseCase
 from src.application.use_cases.order.update import UpdateOrderStatusUseCase
 from src.application.use_cases.user.get_or_create import GetOrCreateUserUseCase
+from src.infrastructure.database.db import async_session_maker
 from src.infrastructure.repository.cart import CartRepository
 from src.infrastructure.repository.category import CategoryRepository
 from src.infrastructure.repository.delivery_method import DeliveryMethodRepository
@@ -27,6 +29,14 @@ from src.infrastructure.services.delivery_method import DeliveryMethodService
 from src.infrastructure.services.order import OrderService
 from src.infrastructure.services.product import ProductService
 from src.infrastructure.services.user import UserService
+
+
+class SQLAlchemySessionProvider(Provider):
+    scope = Scope.APP
+
+    @provide
+    def provide_session_maker(self) -> async_sessionmaker[AsyncSession]:
+        return async_session_maker
 
 
 class RepositoryProvider(Provider):

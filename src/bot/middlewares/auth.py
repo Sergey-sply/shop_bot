@@ -1,3 +1,4 @@
+from structlog import get_logger
 from aiogram import BaseMiddleware
 
 from typing import Any, Callable, Awaitable
@@ -5,7 +6,6 @@ from aiogram.types import TelegramObject, Message
 from dishka import AsyncContainer
 
 from src.application.use_cases.user.get_or_create import GetOrCreateUserUseCase
-from src.infrastructure.logging.config import get_logger
 from src.application.schemas.user import UserSchemaCreate
 
 log = get_logger(__name__)

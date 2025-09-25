@@ -1,5 +1,7 @@
 import os
 
+from structlog import get_logger
+
 from aiogram import Router, Bot
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
@@ -22,7 +24,6 @@ from src.bot.states.product import UpdateProductState, CreateProductState, Chang
 from src.bot.utils.message_processor import get_media_obj
 from src.config.settings import product_image_path, default_product_image_path
 from src.bot.const import BASE_PER_PAGE
-from src.infrastructure.logging.config import get_logger
 from src.application.schemas.product import ProductUpdate, ProductSchemaCreate
 
 log = get_logger(__name__)

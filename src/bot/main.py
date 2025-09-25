@@ -1,4 +1,5 @@
 import asyncio
+from structlog import get_logger
 
 from aiogram import Dispatcher
 from dishka import AsyncContainer
@@ -10,14 +11,15 @@ from src.bot.utils.setup_bot import setup_bot
 from src.bot.utils.setup_dispatcher import setup_dispatcher
 from src.infrastructure.database.db import db_on_startup
 from src.infrastructure.di.setup_dishka import ioc_factory
-from src.infrastructure.logging.config import configure_logging, get_logger
+from src.infrastructure.logging.config import configure_logging
 
+log = get_logger(__name__)
 
 async def run() -> None:
     configure_logging()
-    log = get_logger(__name__)
+    #log = get_logger(__name__)
 
-    log.info("Starting")
+    #log.info("Starting")
 
     await db_on_startup()
 

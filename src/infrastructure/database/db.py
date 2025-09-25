@@ -14,8 +14,10 @@ async_engine = create_async_engine(
     echo=False,
     future=True,
 )
-async_session_maker = async_sessionmaker(bind=async_engine,
-                                         expire_on_commit=False)
+async_session_maker: async_sessionmaker[AsyncSession] = async_sessionmaker(
+    bind=async_engine,
+    expire_on_commit=False
+)
 
 
 async def check_db_connection():

@@ -4,7 +4,7 @@ from src.infrastructure.database.db import async_session_maker_ctx
 
 
 def use_session(func):
-    async def wrapper(self, *args, session: AsyncSession | None = None, **kwargs):  # todo: fix work only with kw
+    async def wrapper(self, *args, session: AsyncSession | None = None, **kwargs):
         if session is not None or session in kwargs:
             return await func(self, *args, session=session, **kwargs)
 

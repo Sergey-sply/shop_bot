@@ -1,10 +1,11 @@
+from structlog import get_logger
 
 from aiogram import Dispatcher
 from dishka import AsyncContainer, make_async_container
 from dishka.integrations.aiogram import setup_dishka
 
-from src.infrastructure.di.providers import UseCaseProvider, ServiceProvider, RepositoryProvider
-from src.infrastructure.logging.config import get_logger
+from src.infrastructure.di.providers import UseCaseProvider, ServiceProvider, RepositoryProvider, \
+    SQLAlchemySessionProvider
 
 log = get_logger(__name__)
 
@@ -12,7 +13,8 @@ def ioc_factory() -> AsyncContainer:
     container = make_async_container(
         RepositoryProvider(),
         ServiceProvider(),
-        UseCaseProvider()
+        UseCaseProvider(),
+        SQLAlchemySessionProvider()
     )
     return container
 
